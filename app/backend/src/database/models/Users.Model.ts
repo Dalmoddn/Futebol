@@ -8,7 +8,7 @@ import {
 import db from '.';
 
 class Users extends Model<InferAttributes<Users>,
-  InferCreationAttributes<Users>> {
+InferCreationAttributes<Users>> {
   declare id: CreationOptional<number>;
   declare username: string;
   declare role: string;

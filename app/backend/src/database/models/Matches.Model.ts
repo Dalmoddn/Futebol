@@ -9,7 +9,7 @@ import db from '.';
 import Teams from './Teams.Model';
 
 class Matches extends Model<InferAttributes<Matches>,
-  InferCreationAttributes<Matches>> {
+InferCreationAttributes<Matches>> {
   declare id: CreationOptional<number>;
   declare homeTeamId: number;
   declare homeTeamGoals: number;
@@ -57,18 +57,18 @@ Matches.init({
 });
 
 Teams.hasMany(Matches, {
-  foreignKey: 'homeTeamId', as: 'homeTeam'
+  foreignKey: 'homeTeamId', as: 'homeTeam',
 })
 Teams.hasMany(Matches, {
-  foreignKey: 'awayTeamId', as: 'awayTeam'
+  foreignKey: 'awayTeamId', as: 'awayTeam',
 })
 
 Matches.belongsTo(Teams, {
-  foreignKey: 'homeTeamId', as: 'homeTeam'
+  foreignKey: 'homeTeamId', as: 'homeTeam',
 })
 
 Matches.belongsTo(Teams, {
-  foreignKey: 'awayTeamId', as: 'awayTeam'
+  foreignKey: 'awayTeamId', as: 'awayTeam',
 })
 
 export default Matches;
