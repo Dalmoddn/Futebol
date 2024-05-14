@@ -23,12 +23,12 @@ Teams.init({
   teamName: {
     type: DataTypes.STRING,
     allowNull: false,
-    field: 'team_name'
-  }
+    field: 'team_name',
+  },
 }, {
   sequelize: db,
   modelName: 'teams',
   timestamps: false,
 });
 
-export default Teams
+export default Teams;
