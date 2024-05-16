@@ -1,6 +1,8 @@
 import * as express from 'express';
 import 'express-async-errors';
 import TeamsController from './database/controllers/Teams.Controller';
+import LoginController from './database/controllers/Login.Controller';
+import ValidateMiddleware from './middlewares/ValidateMiddleware';
 
 import errorMiddleware from './middlewares/errorMiddleware';
 
@@ -16,6 +18,8 @@ class App {
     this.app.get('/', (req, res) => res.json({ ok: true }));
     this.app.get('/teams', TeamsController.getAllTeams);
     this.app.get('/teams/:id', TeamsController.getTeamById);
+    this.app.post('/login', LoginController.loginUser);
+    this.app.get('/login/role', ValidateMiddleware.validateToken, LoginController.userRole);
 
     // Não remova esse middleware de erro, mas fique a vontade para customizá-lo
     // Mantenha ele sempre como o último middleware a ser chamado
