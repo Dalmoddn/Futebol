@@ -5,6 +5,7 @@ import LoginController from './database/controllers/Login.Controller';
 import ValidateMiddleware from './middlewares/ValidateMiddleware';
 
 import errorMiddleware from './middlewares/errorMiddleware';
+import MatchesController from './database/controllers/Matches.Controller';
 
 class App {
   public app: express.Express;
@@ -20,6 +21,7 @@ class App {
     this.app.get('/teams/:id', TeamsController.getTeamById);
     this.app.post('/login', LoginController.loginUser);
     this.app.get('/login/role', ValidateMiddleware.validateToken, LoginController.userRole);
+    this.app.get('/matches', MatchesController.getInProgressMatches);
 
     // Não remova esse middleware de erro, mas fique a vontade para customizá-lo
     // Mantenha ele sempre como o último middleware a ser chamado

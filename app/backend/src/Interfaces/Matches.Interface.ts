@@ -1,4 +1,4 @@
-export default interface Users {
+export default interface MatchesInterface {
   id: number,
   homeTeamId: number,
   homeTeamGoals: number,
