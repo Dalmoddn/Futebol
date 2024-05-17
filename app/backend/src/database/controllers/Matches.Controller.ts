@@ -22,4 +22,15 @@ export default class MatchesController {
       return res.status(401).json({ message: 'Token must be a valid token' });
     }
   }
+
+  public static async updateMatch(req: Request, res: Response) {
+    const { id } = req.params;
+    const { homeTeamGoals, awayTeamGoals } = req.body;
+    try {
+      await MatchesService.updateMatch(Number(id), homeTeamGoals, awayTeamGoals);
+      return res.status(200).json({ message: 'Match updated' });
+    } catch (error) {
+      return res.status(401).json({ message: 'Token must be a valid token' });
+    }
+  }
 }
