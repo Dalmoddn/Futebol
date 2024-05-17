@@ -43,4 +43,8 @@ export default class MatchesService {
     }
     return inProgress;
   }
+
+  public static async finishMatch(matchId: number): Promise<void> {
+    await Matches.update({ inProgress: false }, { where: { id: matchId } });
+  }
 }
