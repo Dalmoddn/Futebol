@@ -25,6 +25,8 @@ class App {
     this.app.patch('/matches/:id/finish', ValidateMiddleware
       .validateToken, MatchesController.finishMatch);
     this.app.patch('/matches/:id', ValidateMiddleware.validateToken, MatchesController.updateMatch);
+    this.app.post('/matches', ValidateMiddleware
+      .validateToken, MatchesController.addInProgressMatch);
 
     // Não remova esse middleware de erro, mas fique a vontade para customizá-lo
     // Mantenha ele sempre como o último middleware a ser chamado

@@ -33,4 +33,16 @@ export default class MatchesController {
       return res.status(401).json({ message: 'Token must be a valid token' });
     }
   }
+
+  public static async addInProgressMatch(req: Request, res: Response) {
+    const { homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals } = req.body;
+    try {
+      const { status, message, match } = await MatchesService
+        .addInProgressMatch(homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals);
+      if (message) return res.status(status).json({ message });
+      return res.status(201).json(match);
+    } catch (error) {
+      return res.status(404).json({ message: 'There is no team with such id!' });
+    }
+  }
 }

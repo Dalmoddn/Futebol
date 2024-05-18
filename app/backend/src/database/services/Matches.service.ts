@@ -52,4 +52,37 @@ export default class MatchesService {
   Promise<void> {
     await Matches.update({ homeTeamGoals, awayTeamGoals }, { where: { id: matchId } });
   }
+
+  public static async verifyTeamsExistence(homeTeamId:
+  number, awayTeamId: number): Promise<any> {
+    if (homeTeamId === awayTeamId) {
+      return { status: 422, message: 'It is not possible to create a match with two equal teams' };
+    }
+    const homeTeam = await Teams.findOne({ where: { id: homeTeamId } });
+    const awayTeam = await Teams.findOne({ where: { id: awayTeamId } });
+    if (!homeTeam || !awayTeam) {
+      return { status: 404, message: 'There is no team with such id!' };
+    }
+    return { status: 201 };
+  }
+
+  public static async addInProgressMatch(
+    homeTeamId: number,
+    awayTeamId: number,
+    homeTeamGoals: number,
+    awayTeamGoals: number,
+  ): Promise<any> {
+    const { status, message } = await this.verifyTeamsExistence(homeTeamId, awayTeamId);
+    const id = (await Matches.findAll()).length + 1;
+    const match = await Matches.create({
+      id,
+      homeTeamId,
+      awayTeamId,
+      homeTeamGoals,
+      awayTeamGoals,
+      inProgress: true,
+    });
+    if (status !== 201) return { status, message };
+    return { status: 201, match };
+  }
 }
