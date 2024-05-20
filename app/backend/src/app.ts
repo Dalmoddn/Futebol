@@ -6,6 +6,7 @@ import ValidateMiddleware from './middlewares/ValidateMiddleware';
 
 import errorMiddleware from './middlewares/errorMiddleware';
 import MatchesController from './database/controllers/Matches.Controller';
+import LeaderboardController from './database/controllers/Leaderboard.Controller';
 
 class App {
   public app: express.Express;
@@ -27,6 +28,7 @@ class App {
     this.app.patch('/matches/:id', ValidateMiddleware.validateToken, MatchesController.updateMatch);
     this.app.post('/matches', ValidateMiddleware
       .validateToken, MatchesController.addInProgressMatch);
+    this.app.get('/leaderboard/home', LeaderboardController.createBoard);
 
     // Não remova esse middleware de erro, mas fique a vontade para customizá-lo
     // Mantenha ele sempre como o último middleware a ser chamado
