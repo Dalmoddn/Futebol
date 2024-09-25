@@ -4,7 +4,7 @@ Esse é um site informativo sobre partidas e classificações de futebol! Neste 
 
 ## Descrição do Projeto
 
-O time de desenvolvimento foi encarregado de desenvolver uma API utilizando a metodologia **TDD** (Test-Driven Development). A API será responsável por gerenciar as partidas de futebol e a classificação dos times, sendo integrada a um front-end já existente que exibirá as informações para os usuários. Além disso, o projeto utiliza o **Sequelize** para a modelagem e manipulação do banco de dados.
+Fui encarregado de desenvolver uma API utilizando a metodologia **TDD** (Test-Driven Development). A API será responsável por gerenciar as partidas de futebol e a classificação dos times, sendo integrada a um front-end já existente que exibirá as informações para os usuários. Além disso, o projeto utiliza o **Sequelize** para a modelagem e manipulação do banco de dados.
 
 ### Funcionalidades
 
@@ -32,12 +32,12 @@ O time de desenvolvimento foi encarregado de desenvolver uma API utilizando a me
 
 1. Clone este repositório:
     ```bash
-    git clone https://github.com/seu-usuario/tfc-project.git
+    git clone 
     ```
 
 2. Acesse o diretório do projeto:
     ```bash
-    cd tfc-project
+    cd 
     ```
 
 3. Suba os contêineres com Docker-Compose:
